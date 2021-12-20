@@ -1,0 +1,13 @@
+h1 {
+    color : gold;
+    text-align: center;
+    text-decoration: underline;
+    font-size : 3.6em;
+}
+
+.column {
+    display: flex;
+    flex-direction : column;
+    max-width : 1200px;
+    margin : auto;
+}
