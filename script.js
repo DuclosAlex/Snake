@@ -62,7 +62,9 @@ document.addEventListener("DOMContentLoaded", function()
     function gameOver(){
 
         ctx.save();
-        ctx.fillText("Game Over", 5, 15);
+        ctx.font = "48px serif";
+        ctx.fillStyle ="gold";
+        ctx.fillText("Game Over", 350, 300);
         ctx.restore();
     }
 
