@@ -1,5 +1,6 @@
-window.onload = function() 
+document.addEventListener("DOMContentLoaded", function() 
 {
+    var canvas = document.querySelector('#canvas');
     var canvasWidth = 900;
     var canvasHeight = 600;
     var blockSize = 30;
@@ -10,18 +11,16 @@ window.onload = function()
     var widthInBlocks = canvasWidth/blockSize;
     var heightInBlocks = canvasHeight/blockSize;
     var score;
+    var btn = document.querySelector("#start");
 
     init();
 
 
     function init()
     {
-
-        var canvas = document.createElement('canvas');
         canvas.width = canvasWidth;
         canvas.height = canvasHeight;
         canvas.style.border = "25px dashed gold";
-        document.body.appendChild(canvas)
         ctx = canvas.getContext('2d');
         snake = new Snake([[6,4],[5,4],[4,4],[3,4],[2,4]], "right");
         apple = new Apple([10,10]);
@@ -55,7 +54,7 @@ window.onload = function()
             ctx.clearRect(0,0, canvasWidth, canvasHeight);
             snake.draw();
             apple.draw();
-            drawScore();
+            var displayScore = document.querySelector(".score").innerText = `Votre score est de : ${score}`;
             setTimeout(refreshCanvas, delay)
         }
     }
@@ -64,24 +63,9 @@ window.onload = function()
 
         ctx.save();
         ctx.fillText("Game Over", 5, 15);
-        ctx.fillText("Appuyer sur la touche espace pour rejouer", 5,25);
         ctx.restore();
     }
 
-    function restart() {
-
-        snake = new Snake([[6,4],[5,4],[4,4],[3,4],[2,4]], "right");
-        apple = new Apple([10,10]);
-        score = 0;
-        refreshCanvas();
-    }
-
-    function drawScore(){
-
-        ctx.save();
-        ctx.fillText(score.toString(), 5, canvasHeight - 5);
-        ctx.restore();
-    }
 
     function drawBlock(ctx, position){
         var x = position[0] * blockSize;
@@ -258,15 +242,11 @@ window.onload = function()
             case 40: 
                 newDirection ="down";
                 break;
-            case 32:
-                restart();
-                return;
             default:           
                 return;
         }
         snake.setDirection(newDirection);
-    }
-
+    } 
     
-}
+});
 

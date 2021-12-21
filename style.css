@@ -11,3 +11,17 @@ h1 {
     max-width : 1200px;
     margin : auto;
 }
+.row {
+    justify-content: space-around;
+    display : flex;
+    margin-top : 20px;
+}
+
+#start {
+    background-color: royalblue;
+    color : white;
+}
+
+.score {
+    font-size : 1.5em;
+}
